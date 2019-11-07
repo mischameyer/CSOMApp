@@ -31,7 +31,6 @@ namespace WpfApp1
         /// <param name="e"></param>
         private void btnConnect_Click(object sender, RoutedEventArgs e)
         {
-
             try
             {
                 ctx = new Connection.SpConnector(this.txbUsername.Text, this.passwordBox.SecurePassword);
@@ -46,7 +45,6 @@ namespace WpfApp1
             {
                 RaiseException(ex);
             }            
-
         }
 
         /// <summary>
@@ -56,7 +54,6 @@ namespace WpfApp1
         /// <param name="e"></param>
         private void btnGetLists_Click(object sender, RoutedEventArgs e)
         {
-
             Web web = ctx.SPContext.Web;
             ctx.SPContext.Load(web.Lists, lists => lists);
 
@@ -70,7 +67,6 @@ namespace WpfApp1
             {
                 txtOutputLists.Text = txtOutputLists.Text + "\n\r" + list.Title;
             }
-
         }
 
         /// <summary>
@@ -80,7 +76,6 @@ namespace WpfApp1
         /// <param name="e"></param>
         private void btnGetListItems_Click(object sender, RoutedEventArgs e)
         {
-
             this.txtOutputItems.Text = "";
 
             Web web = ctx.SPContext.Web;
@@ -98,7 +93,6 @@ namespace WpfApp1
                 // We have all the list item data. For example, Title.
                 txtOutputItems.Text = txtOutputItems.Text + "\n\r" + listItem["ID"] + " | " + listItem["Title"] + " | " + listItem["Description"];
             }
-
         }
 
         /// <summary>
@@ -130,9 +124,7 @@ namespace WpfApp1
             } catch(Exception ex)
             {
                 RaiseException(ex);
-            }
-            
-
+            }           
         }        
 
         /// <summary>
@@ -158,19 +150,20 @@ namespace WpfApp1
 
                 this.txtBoxId.Text = "";
                 this.txtBoxDescriptionUpdate.Text = "";
-
             }
             catch (Exception ex)
             {
                 RaiseException(ex);
             }
-
-
         }
 
+        /// <summary>
+        /// Adds a local file to an existing document library 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnOpenFile_Click(object sender, RoutedEventArgs e)
         {
-
             try
             {
                 OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -208,10 +201,6 @@ namespace WpfApp1
             {
                 RaiseException(ex);
             }
-                
-
-
-
         }
 
         /// <summary>
@@ -222,7 +211,5 @@ namespace WpfApp1
         {
             MessageBox.Show(ex.ToString());
         }
-
-        
     }
 }
